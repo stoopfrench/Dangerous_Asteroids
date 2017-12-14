@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+:root {
+
+	font-size: 18px;
+}
+
+body {
+
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+}
+
+h1 {
+
+	font-size: 3.25rem;
+	margin-top: 0;
+	font-variant: small-caps;
+	border-bottom: 2px solid grey;
+}
+
+#entryInfo h3 {
+
+	margin-top: .5rem;
+}
+
+#showToday {
+
+	background-color: black;
+	color: white;
+	font-size: .75rem;
+	height: 1.5rem;
+	width: 5rem;
+	border: 2px solid #A7A8B1 ;
+	border-radius: .25rem;
+	outline-color: black;
+	cursor: pointer;
+}
+
+#showWeek {
+
+	background-color: black;
+	color: white;
+	font-size: .75rem;
+	height: 1.5rem;
+	width: 5rem;
+	border: 2px solid #A7A8B1;
+	border-radius: .25rem;
+	outline-color: black;
+	cursor: pointer;
+}
+
+#searchField {
+
+	display: inline-block;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+#searchField h2 {
+
+	font-variant: normal;
+
+}
+
+#search {
+
+	position: relative;
+}
+
+#search label {
+
+	position: relative;
+	text-decoration: underline;
+}
+
+#rangeSearch {
+
+	position: relative;
+}
+
+#rangeSearch label {
+
+	text-decoration: underline;
+
+}
+
+input {
+
+	outline-color: black;
+	margin-top: .5rem;
+	margin-bottom: .25rem;
+}
+
+#listDiv {
+
+	border: 2px solid black;
+	padding: 1.5rem;
+	margin-top: .25rem;
+	display: inline-block;
+	width: 320px;
+	height: 250px;
+	overflow: scroll;
+}
+
+#listName {
+
+	text-align: center;
+}
+
+#listName a {
+
+	color: blue;
+}
+
+.searchSubmit {
+
+	background-color: black;
+	color: white;
+	height: 1.5rem;
+	width: 5rem;
+	font-size: .75rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 1rem;
+	cursor: pointer;
+	border: 2px solid #A7A8B1;
+
+}
+
+.form-check-input {
+
+	cursor: pointer;
+}
+
+.input {
+
+	height: 1.5rem;
+	width: 9rem;
+	text-align: right; 
+	border: 1px solid black;
+	background-color: #DFDFE7;
+}
+
+.input[type='date'] {
+
+	font-size: .75rem;
+	text-transform: uppercase;
+	
+}
+
+#entryInfo {
+
+	margin-top: 3rem;
+	border-top: 2px solid grey;
+}
+
+#message h2 {
+
+	margin-top: 3rem;
+}
+
+.dateInfo {
+
+	text-decoration: underline;
+}
+
+#summaryList {
+
+	display: inline-block;
+	list-style: none;
+	text-align: left;
+	border: 2px solid black;
+	padding: 1rem;
+	margin-top: 1rem;
+	border-radius: .25rem;
+	background-color: #DFDFE7;
+}
+
+
