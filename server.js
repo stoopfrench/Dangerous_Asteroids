@@ -1,12 +1,13 @@
 const express = require('express')
+const HTTP = require('http')
 
 const request = require('request')
-const nasaKey = require('./secrets.js')
+const secrets = require('./secrets.js')
 
 var app = express()
 
 
-var key = nasaKey.Key
+var key = secrets.nasaKey
 
 
 app.use(express.static('./public'))
@@ -43,13 +44,22 @@ app.get('/range_search', function(req, res) {
 	})
 })
 
+//Servers ============================================================================================================
 
-var port = 8081
+//HTTP ---------------------------------------------------------------------------
 
-app.listen(port, function() {
+var httpServer = HTTP.createServer(app)
 
-	console.log("'NASA_part2' on port " + port)
+httpServer.listen(80)
 
-})
+//EXPRESS ------------------------------------------------------------------------
+
+// var port = 8081
+
+// app.listen(port, function() {
+
+// 	console.log("'NASA_part2' on port " + port)
+
+// })
 
 
