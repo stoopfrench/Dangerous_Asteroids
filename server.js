@@ -44,22 +44,21 @@ app.get('/range_search', function(req, res) {
 	})
 })
 
-//Servers ============================================================================================================
 
-//HTTP ---------------------------------------------------------------------------
+//HTTP SERVER ---------------------------------------------------------------------------
 
-var httpServer = HTTP.createServer(app)
+// var httpServer = HTTP.createServer(app)
 
-httpServer.listen(80)
+// httpServer.listen(80)
 
-//EXPRESS ------------------------------------------------------------------------
+//EXPRESS SERVER ------------------------------------------------------------------------
 
-// var port = 8081
+var port = 8081
 
-// app.listen(port, function() {
+app.listen(port, function() {
 
-// 	console.log("'NASA_part2' on port " + port)
+	console.log("'NASA_part2' on port " + port)
 
-// })
+})
 
 
