@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 :root {
 
-	font-size: 18px;
+	font-size: 16px;
 }
 
 body {
@@ -30,23 +31,32 @@ h1 {
 
 .asteroidResults {
 
-	background-color: lightgrey;
-	/*border: 1px solid black;*/
-	margin-bottom: 1rem;
+	background-color: #353A3F;
+	margin-bottom: .5rem;
 }
 
 .asteroidResultsTitle {
 
 	border-bottom: 1px solid black;
 	padding: .5rem;
+	cursor: pointer;
+	color: white;
 }
 
-h3.asteroidResultsTitle {
+.asteroidResultsTitle span {
+
+	font-family: 'Roboto Mono', monospace;
+	/*font-size: .9rem;*/
+	
+}
+
+h4.asteroidResultsTitle {
 
 	margin-bottom: 0;
 }
 
 .asteroidResultsDescription {
 
-	background-color: #F3F3F3;
+	background-color: #E4E4E4;
+	color: #292929;
 }

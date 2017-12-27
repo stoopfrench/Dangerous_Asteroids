@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 		sentryData = body.data.slice(0, 25)
 
-		// console.log('sentry data ', sentryData)
+		console.log('sentry data ', sentryData)
 
 		for(var i = 0; i < sentryData.length; i++){
 
@@ -24,8 +24,9 @@ $(document).ready(function() {
 
 			$('#resultsList').append(`
 					<li class="asteroidResults">
-						<h3 class="asteroidResultsTitle" onclick="getAsteroidDetails(this)" data-toggle="modal" data-target="#moreInfoModal">${sentryData[i].des}</h3>
+						<h4 class="asteroidResultsTitle" onclick="getAsteroidDetails(this)" data-toggle="modal" data-target="#moreInfoModal"><span>${i + 1}. </span>${sentryData[i].des}</h4>
 						<ul class="asteroidResultsDescription">
+							<li>Date Range: ${sentryData[i].range}</li>
 							<li>Impact Probability: ${sentryData[i].ip}</li>
 							<li>Diameter: ${diameter} ft</li>
 							<li>Velocity: ${velocity} ft/s</li>
@@ -39,6 +40,8 @@ $(document).ready(function() {
 })
 	var getAsteroidDetails = function(name){
 
+		$('#moreInfoList').empty()
+
 		console.log(name.textContent)
 
 		var asteroidSearch = name.textContent
@@ -47,6 +50,21 @@ $(document).ready(function() {
 
 			console.log('data ', data)
 
+			var splitDate = data.summary.last_obs.split('.')
+
+			var sliceDate = splitDate.slice(0,1)
+
+			var lastObs = sliceDate.join()
+
+
+			console.log(lastObs)
+
 			$('.modal-title').text(asteroidSearch)
+			$('#moreInfoList').append(`
+					<li>Last Observation: ${lastObs}</li>
+					<li>Mass: ${data.summary.mass} kg</li>
+					<li>Energy: ${data.summary.energy} megatons of TNT</li>
+				`)
+
 		})
 	}

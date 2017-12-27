@@ -51,6 +51,8 @@ app.get('/range_search', function(req, res) {
 	})
 })
 
+// SENTRY API ==========================================================================
+
 app.get('/sentry_data', function(req, res) {
 
 	var sentryAPI = `https://ssd-api.jpl.nasa.gov/sentry.api`
@@ -59,19 +61,6 @@ app.get('/sentry_data', function(req, res) {
 		res.send(sentryDataFromServer)
 
 		console.log('sentry data sent')
-	})
-})
-
-app.get('/sentry_asteroid', function(req, res) {
-
-	var sentryAsteroidAPI = `https://ssd-api.jpl.nasa.gov/sentry.api?des=${req.query.des}`
-	request(sentryAsteroidAPI, function(err, response, sentryAsteroidDataFromServer) {
-
-		if(err){console.log(err)}
-
-		res.send(sentryAsteroidDataFromServer)
-
-		console.log('sent sentry single asteroid data')
 	})
 })
 

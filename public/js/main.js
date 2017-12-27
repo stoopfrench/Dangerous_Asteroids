@@ -35,7 +35,6 @@ $(document).ready(function() {
 
 		resetHTML()
 
-
 		var today = new Date()
 
 		var formatToday = new Date(+today - today.getTimezoneOffset() * 60 * 1000).toISOString().split('T')[0]
