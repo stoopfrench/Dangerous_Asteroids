@@ -21,6 +21,13 @@ app.get('/', function(req, res) {
 
 })
 
+app.get('/sentry', function(req, res) {
+
+	res.sendFile('./public/html/sentry.html', {root:'./'})
+
+	console.log('sent sentry.html')
+})
+
 app.get('/search', function(req, res) {
 	
 
@@ -29,7 +36,7 @@ app.get('/search', function(req, res) {
 			
 			res.send(dataFromServer)
 			
-			console.log('single-date api')
+			console.log('single-date sent')
 		})
 	})
 
@@ -40,7 +47,31 @@ app.get('/range_search', function(req, res) {
 			
 			res.send(dataFromServer)
 			
-			console.log('range-date api')
+			console.log('range-date sent')
+	})
+})
+
+app.get('/sentry_data', function(req, res) {
+
+	var sentryAPI = `https://ssd-api.jpl.nasa.gov/sentry.api`
+	request(sentryAPI, function(err, response, sentryDataFromServer) {
+
+		res.send(sentryDataFromServer)
+
+		console.log('sentry data sent')
+	})
+})
+
+app.get('/sentry_asteroid', function(req, res) {
+
+	var sentryAsteroidAPI = `https://ssd-api.jpl.nasa.gov/sentry.api?des=${req.query.des}`
+	request(sentryAsteroidAPI, function(err, response, sentryAsteroidDataFromServer) {
+
+		if(err){console.log(err)}
+
+		res.send(sentryAsteroidDataFromServer)
+
+		console.log('sent sentry single asteroid data')
 	})
 })
 

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+:root {
+
+	font-size: 18px;
+}
+
+body {
+
+	font-family: 'Oswald', sans-serif;
+}
+
+ol {
+
+	padding: 0;
+}
+
+ol, ul {
+
+	list-style: none;
+}
+
+h1 {
+
+	font-size: 3.25rem;
+	margin-top: 0;
+	font-variant: small-caps;
+	border-bottom: 2px solid grey;
+}
+
+.asteroidResults {
+
+	background-color: lightgrey;
+	/*border: 1px solid black;*/
+	margin-bottom: 1rem;
+}
+
+.asteroidResultsTitle {
+
+	border-bottom: 1px solid black;
+	padding: .5rem;
+}
+
+h3.asteroidResultsTitle {
+
+	margin-bottom: 0;
+}
+
+.asteroidResultsDescription {
+
+	background-color: #F3F3F3;
+}

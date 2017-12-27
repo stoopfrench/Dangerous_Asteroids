@@ -35,7 +35,6 @@ $(document).ready(function() {
 
 		resetHTML()
 
-		scrollToResults()
 
 		var today = new Date()
 
@@ -60,43 +59,53 @@ $(document).ready(function() {
 
 				if (body.near_earth_objects[formatToday]) {
 				
-				for(var asteroid of body.near_earth_objects[formatToday]) {
+					for(var asteroid of body.near_earth_objects[formatToday]) {
+						
+		// Declare variables and push into the hazardousAsteroids array
+
+						var name = asteroid.name
+
+						var diameter = Math.floor(Number(asteroid.estimated_diameter.feet.estimated_diameter_max)).toLocaleString()
 					
-	// Declare variables and push into the hazardousAsteroids array
+						var velocity = Math.floor(Number(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)).toLocaleString()
 
+						var distanceFromEarth = Math.floor(Number(asteroid.close_approach_data[0].miss_distance.miles)).toLocaleString()
 
-					var name = asteroid.name
+						var link = asteroid.nasa_jpl_url
 
-					var diameter = Math.floor(Number(asteroid.estimated_diameter.feet.estimated_diameter_max)).toLocaleString()
-				
-					var velocity = Math.floor(Number(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)).toLocaleString()
+						
+						if(asteroid.is_potentially_hazardous_asteroid) {
 
-					var distanceFromEarth = Math.floor(Number(asteroid.close_approach_data[0].miss_distance.miles)).toLocaleString()
+							console.log(asteroid)
 
-					var link = asteroid.nasa_jpl_url
+							var id = asteroid.neo_reference_id
 
-					
-					if(asteroid.is_potentially_hazardous_asteroid) {
+							// $.get(`/sentry?spk=${id}`, function(body, status) {
 
-						hazardousAsteroids.push(asteroid)
+							// 	body = JSON.parse(body)
 
-					
-	// Print results to html page
+							// 	console.log(body)
+							// })
 
-						$('#entry').append (
-							`
-							<div id='listDiv'>
-							<h4 id='listName'><a href="${link}" target="_blank">${name}<a></h4>
-							 <p id='listDiameter'>${'Estimated Diameter: ' + diameter + ' ft'}</p>
-							 <p id='listVelocity'>${'Velocity: ' + velocity + ' mph'}</p>
-							 <p id='listDistance'>${'Distance from Earth: ' + distanceFromEarth + ' miles'}</p>
-							 </div>
-							 `
-							)
+							hazardousAsteroids.push(asteroid)
 
-					}		
+						
+		// Print results to html page
 
-				}
+							$('#entry').append (
+								`
+								<div id='listDiv'>
+								<h4 id='listName'><a href="${link}" target="_blank">${name}<a></h4>
+								 <p id='listDiameter'>${'Estimated Diameter: ' + diameter + ' ft'}</p>
+								 <p id='listVelocity'>${'Velocity: ' + velocity + ' mph'}</p>
+								 <p id='listDistance'>${'Distance from Earth: ' + distanceFromEarth + ' miles'}</p>
+								 </div>
+								 `
+								)
+
+						}		
+
+					}
 						
 	// Print to html
 							$('#entryInfo').append (
@@ -150,6 +159,7 @@ $(document).ready(function() {
 				
 			})
 						
+		scrollToResults()
 	})
 									
 
@@ -160,7 +170,6 @@ $(document).ready(function() {
 			
 			resetHTML()
 
-			scrollToResults()
 			
 			event.preventDefault()
 			
@@ -194,44 +203,52 @@ $(document).ready(function() {
 
 					if (body.near_earth_objects[userDate]) {
 					
-					for(var asteroid of body.near_earth_objects[userDate]) {
+						for(var asteroid of body.near_earth_objects[userDate]) {
+						
+
+	// Declare variables and push into the hazardousAsteroids array
+
+
+						var name = asteroid.name
+
+						var diameter = Math.floor(Number(asteroid.estimated_diameter.feet.estimated_diameter_max)).toLocaleString()
 					
+						var velocity = Math.floor(Number(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)).toLocaleString()
 
-// Declare variables and push into the hazardousAsteroids array
+						var distanceFromEarth = Math.floor(Number(asteroid.close_approach_data[0].miss_distance.miles)).toLocaleString()
 
+						var link = asteroid.nasa_jpl_url
 
-					var name = asteroid.name
+						
+						if(asteroid.is_potentially_hazardous_asteroid) {
 
-					var diameter = Math.floor(Number(asteroid.estimated_diameter.feet.estimated_diameter_max)).toLocaleString()
-				
-					var velocity = Math.floor(Number(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)).toLocaleString()
+							var id = asteroid.neo_reference_id
 
-					var distanceFromEarth = Math.floor(Number(asteroid.close_approach_data[0].miss_distance.miles)).toLocaleString()
+							// $.get(`/sentry?spk=${id}`, function(body, status) {
 
-					var link = asteroid.nasa_jpl_url
+							// 	body = JSON.parse(body)
 
-					
-					if(asteroid.is_potentially_hazardous_asteroid) {
+							// 	console.log(body)
+							// })							
 
-						hazardousAsteroids.push(asteroid)
+							hazardousAsteroids.push(asteroid)
+						
+	// Print results to html page
 
-					
-// Print results to html page
+							$('#entry').append (
+								`
+								<div id='listDiv'>
+								<h4 id='listName'><a href="${link}" target="_blank">${name}<a></h4>
+								 <p id='listDiameter'>${'Estimated Diameter: ' + diameter + ' ft'}</p>
+								 <p id='listVelocity'>${'Velocity: ' + velocity + ' mph'}</p>
+								 <p id='listDistance'>${'Distance from Earth: ' + distanceFromEarth + ' miles'}</p>
+								 </div>
+								 `
+								)
 
-						$('#entry').append (
-							`
-							<div id='listDiv'>
-							<h4 id='listName'><a href="${link}" target="_blank">${name}<a></h4>
-							 <p id='listDiameter'>${'Estimated Diameter: ' + diameter + ' ft'}</p>
-							 <p id='listVelocity'>${'Velocity: ' + velocity + ' mph'}</p>
-							 <p id='listDistance'>${'Distance from Earth: ' + distanceFromEarth + ' miles'}</p>
-							 </div>
-							 `
-							)
+						}		
 
-					}		
-
-				}
+					}
 						
 // Print to html
 							$('#entryInfo').append (
@@ -287,6 +304,8 @@ $(document).ready(function() {
 				})
 
 			}			
+		
+		scrollToResults()
 	})
 
 // PAST WEEK ================================================================================================================================================================================
@@ -295,8 +314,6 @@ $(document).ready(function() {
 		$('#showWeek').on('click', function(){
 
 			resetHTML()
-
-			scrollToResults()
 
 			var today = new Date()
 
@@ -367,6 +384,16 @@ $(document).ready(function() {
 							var distanceFromEarth = Math.floor(Number(dayAsteroid.close_approach_data[0].miss_distance.miles)).toLocaleString()
 
 							var link = dayAsteroid.nasa_jpl_url
+
+							var id = dayAsteroid.neo_reference_id
+
+							// $.get(`/sentry?spk=${id}`, function(body, status) {
+
+							// 	body = JSON.parse(body)
+
+							// 	console.log(body)
+							// })	
+
 
 							hazardousAsteroids.push(dayAsteroid)
 
@@ -443,7 +470,7 @@ $(document).ready(function() {
 
 				})
 
-
+			scrollToResults()
 		})
 
 
@@ -453,8 +480,6 @@ $(document).ready(function() {
 		$('#rangeSearch').on('submit', function(event) {
 			
 			resetHTML()
-
-			scrollToResults()
 
 			event.preventDefault()
 
@@ -542,6 +567,15 @@ $(document).ready(function() {
 
 							var link = dayAsteroid.nasa_jpl_url
 
+							var id = dayAsteroid.neo_reference_id
+
+							// $.get(`/sentry?spk=${id}`, function(body, status) {
+
+							// 	body = JSON.parse(body)
+
+							// 	console.log(body)
+							// })
+
 							hazardousAsteroids.push(dayAsteroid)
 
 
@@ -619,9 +653,9 @@ $(document).ready(function() {
 
 		}
 
-
+		scrollToResults()
 	})
-
+	
 })
 //FUNCTIONS ==============================================================================================================================================================================
 
