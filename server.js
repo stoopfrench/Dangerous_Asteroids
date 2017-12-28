@@ -1,5 +1,6 @@
 const express = require('express')
 const HTTP = require('http')
+const HTTPS = require('https')
 
 const request = require('request')
 const secrets = require('./secrets.js')
@@ -21,7 +22,7 @@ app.get('/', function(req, res) {
 
 })
 
-app.get('/sentry', function(req, res) {
+app.get('/Top-25', function(req, res) {
 
 	res.sendFile('./public/html/sentry.html', {root:'./'})
 
@@ -65,11 +66,42 @@ app.get('/sentry_data', function(req, res) {
 })
 
 
-//HTTP SERVER ---------------------------------------------------------------------------
+//HTTPS SERVER ---------------------------------------------------------------------------
 
-// var httpServer = HTTP.createServer(app)
+// try {
+//     var httpsConfig = {
+        
+//         key: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/privkey.pem'),
+//         cert: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/fullchain.pem'),
+//     }
 
-// httpServer.listen(80)
+//     var httpsServer = HTTPS.createServer(httpsConfig, app)
+    
+//     httpsServer.listen(443, function(){
+    	
+//     	console.log('running on 443')
+//     })
+    
+//     var httpApp = express()
+    
+//     httpApp.use(function(req, res, next){
+        
+//         res.redirect('https://asteroids.iamaaronallen.com' + req.url)
+//     })
+    
+//     httpApp.listen(80)
+// }
+
+// catch(e){
+    
+//     console.log(e)
+    
+//     console.log('could not start HTTPS server')
+    
+//     var httpServer = HTTP.createServer(app)
+    
+//     daycdhttpServer.listen(80)
+// }
 
 //EXPRESS SERVER ------------------------------------------------------------------------
 
@@ -77,7 +109,7 @@ var port = 8081
 
 app.listen(port, function() {
 
-	console.log("'NASA_part2' on port " + port)
+	console.log("'Dangerous Asteroids' on port " + port)
 
 })
 
