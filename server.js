@@ -87,6 +87,10 @@ try {
 
     var httpsServer = HTTPS.createServer(httpsConfig, app, function(){
 
+    })
+    
+    httpsServer.listen(443, function(){
+    	
     	counter++
 
     	fs.appendFile('viewCounter.txt', counter, (err) => {
@@ -95,10 +99,7 @@ try {
   			
   			console.log('written to file');
 		});
-    })
-    
-    httpsServer.listen(443, function(){
-    	
+
     	console.log('running on 443')
     })
     
