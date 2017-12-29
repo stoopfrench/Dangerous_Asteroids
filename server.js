@@ -14,6 +14,9 @@ var key = secrets.nasaKey
 app.use(express.static('./public'))
 
 
+// HTML FILES =========================================================================== 
+
+
 app.get('/', function(req, res) {
 
 	res.sendFile('./public/html/index.html', {root:'./'})
@@ -28,6 +31,10 @@ app.get('/Top-25', function(req, res) {
 
 	console.log('sent sentry.html')
 })
+
+
+// NEO API ==============================================================================
+
 
 app.get('/search', function(req, res) {
 	
@@ -52,7 +59,9 @@ app.get('/range_search', function(req, res) {
 	})
 })
 
-// SENTRY API ==========================================================================
+
+// SENTRY API ===========================================================================
+
 
 app.get('/sentry_data', function(req, res) {
 
@@ -65,52 +74,51 @@ app.get('/sentry_data', function(req, res) {
 	})
 })
 
-
 //HTTPS SERVER ---------------------------------------------------------------------------
 
-// try {
-//     var httpsConfig = {
+try {
+    var httpsConfig = {
         
-//         key: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/privkey.pem'),
-//         cert: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/fullchain.pem'),
-//     }
+        key: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/pop-spots.co/fullchain.pem'),
+    }
 
-//     var httpsServer = HTTPS.createServer(httpsConfig, app)
+    var httpsServer = HTTPS.createServer(httpsConfig, app)
     
-//     httpsServer.listen(443, function(){
+    httpsServer.listen(443, function(){
     	
-//     	console.log('running on 443')
-//     })
+    	console.log('running on 443')
+    })
     
-//     var httpApp = express()
+    var httpApp = express()
     
-//     httpApp.use(function(req, res, next){
+    httpApp.use(function(req, res, next){
         
-//         res.redirect('https://asteroids.iamaaronallen.com' + req.url)
-//     })
+        res.redirect('https://asteroids.iamaaronallen.com' + req.url)
+    })
     
-//     httpApp.listen(80)
-// }
+    httpApp.listen(80)
+}
 
-// catch(e){
+catch(e){
     
-//     console.log(e)
+    console.log(e)
     
-//     console.log('could not start HTTPS server')
+    console.log('could not start HTTPS server')
     
-//     var httpServer = HTTP.createServer(app)
+    var httpServer = HTTP.createServer(app)
     
-//     daycdhttpServer.listen(80)
-// }
+    daycdhttpServer.listen(80)
+}
 
 //EXPRESS SERVER ------------------------------------------------------------------------
 
-var port = 8081
+// var port = 8081
 
-app.listen(port, function() {
+// app.listen(port, function() {
 
-	console.log("'Dangerous Asteroids' on port " + port)
+// 	console.log("'Dangerous Asteroids' on port " + port)
 
-})
+// })
 
 

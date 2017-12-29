@@ -19,6 +19,12 @@ h1 {
 	border-bottom: 2px solid grey;
 }
 
+nav li {
+
+	margin-left: .5rem;
+	margin-right: .5rem;
+}
+
 #entryInfo h3 {
 
 	margin-top: .5rem;

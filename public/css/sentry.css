@@ -29,6 +29,12 @@ h1 {
 	border-bottom: 2px solid grey;
 }
 
+nav li {
+
+	margin-left: .5rem;
+	margin-right: .5rem;
+}
+
 .asteroidResults {
 
 	background-color: #353A3F;
@@ -73,6 +79,12 @@ h4.asteroidResultsTitle {
 
 	border-bottom: 1px solid #202020;
 	margin-right: 40px;
+}
+
+#moreInfoList span {
+
+	color: grey;
+	margin-left: .25rem;
 }
 
 .modal-content {

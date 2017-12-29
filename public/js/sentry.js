@@ -6,7 +6,6 @@ $(document).ready(function() {
 
 		body = JSON.parse(body)
 
-
 		body.data.sort(function(a,b){
 
 			return b.ip - a.ip
@@ -21,8 +20,6 @@ $(document).ready(function() {
 			var ip = sentryData[i].ip
 
 			var formatIp = Number(ip).toExponential()
-
-			// console.log(formatIp)
 
 			var diameter = (sentryData[i].diameter * 3280.84).toFixed(2)
 
@@ -40,11 +37,10 @@ $(document).ready(function() {
 						</ul>
 					</li>
 				`)
-
 		}
 	})
-
 })
+
 	var getAsteroidDetails = function(name){
 
 		$('#moreInfoList').empty()
@@ -55,7 +51,7 @@ $(document).ready(function() {
 
 		$.get(`https://ssd-api.jpl.nasa.gov/sentry.api?des=${asteroidSearch}`, function(data, status){
 
-			// console.log('data ', data)
+			console.log('data ', data)
 
 			var splitDate = data.summary.last_obs.split('.')
 
@@ -73,14 +69,25 @@ $(document).ready(function() {
 
 			var fixedDarc = darc.split('.')[0]
 
+			var ip = data.summary.ip
+
+			var formatIp = Number(ip).toExponential()
+
+			var diameter = (data.summary.diameter * 3280.84).toFixed(2)
+
+			var velocity = Math.floor(data.summary.v_inf * 3280.84).toLocaleString()
+
 			$('.modal-title').text(asteroidSearch)
 			$('#moreInfoList').append(`
-					<li>Last Observation: ${lastObs}</li>
-					<li>Days Observed: ${fixedDarc} days</li>
-					<li>Mass: ${data.summary.mass} kg</li>
-					<li>Absolute Magnitude: ${data.summary.h}</li>
-					<li># of Potential Impacts: ${data.summary.n_imp}</li>
-					<li>Energy: ${data.summary.energy} megatons of TNT</li>
+					<li>Last Observation: <span>${lastObs}</span></li>
+					<li>Days Observed: <span>${fixedDarc} days</span></li>
+					<li>Mass: <span>${data.summary.mass} kg</span></li>
+					<li>Diameter: <span>${diameter} kg</span></li>
+					<li>Absolute Magnitude: <span>${data.summary.h}</span></li>
+					<li>Impact Potential: <span>${formatIp} kg</span></li>
+					<li># of Potential Impacts: <span>${data.summary.n_imp}</span></li>
+					<li>Velocity: <span>${velocity}</span></li>
+					<li>Energy: <span>${data.summary.energy} megatons of TNT</span></li>
 				`)
 
 		})
