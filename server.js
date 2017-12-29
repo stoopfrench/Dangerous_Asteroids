@@ -89,7 +89,7 @@ try {
 
     	counter++
 
-    	fs.appendFile('viewCounter.text', counter, (err) => {
+    	fs.appendFile('viewCounter.txt', counter, (err) => {
   			
   			if (err) throw err;
   			
