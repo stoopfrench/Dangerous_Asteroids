@@ -32,8 +32,6 @@ $(document).ready(function() {
 							<li>Rank: ${i + 1}</li>
 							<li>Date Range: ${sentryData[i].range}</li>
 							<li>Impact Probability: ${formatIp}</li>
-							<li>Diameter: ${diameter} ft</li>
-							<li>Velocity: ${velocity} ft/s</li>
 						</ul>
 					</li>
 				`)
@@ -51,7 +49,7 @@ $(document).ready(function() {
 
 		$.get(`https://ssd-api.jpl.nasa.gov/sentry.api?des=${asteroidSearch}`, function(data, status){
 
-			console.log('data ', data)
+			// console.log('data ', data)
 
 			var splitDate = data.summary.last_obs.split('.')
 
@@ -77,16 +75,16 @@ $(document).ready(function() {
 
 			var velocity = Math.floor(data.summary.v_inf * 3280.84).toLocaleString()
 
-			$('.modal-title').text(asteroidSearch)
+			$('.modal-title').text(data.summary.fullname)
 			$('#moreInfoList').append(`
 					<li>Last Observation: <span>${lastObs}</span></li>
 					<li>Days Observed: <span>${fixedDarc} days</span></li>
 					<li>Mass: <span>${data.summary.mass} kg</span></li>
-					<li>Diameter: <span>${diameter} kg</span></li>
+					<li>Diameter: <span>${diameter} ft</span></li>
 					<li>Absolute Magnitude: <span>${data.summary.h}</span></li>
-					<li>Impact Potential: <span>${formatIp} kg</span></li>
+					<li>Impact Potential: <span>${formatIp}</span></li>
 					<li># of Potential Impacts: <span>${data.summary.n_imp}</span></li>
-					<li>Velocity: <span>${velocity}</span></li>
+					<li>Velocity: <span>${velocity} ft/s</span></li>
 					<li>Energy: <span>${data.summary.energy} megatons of TNT</span></li>
 				`)
 

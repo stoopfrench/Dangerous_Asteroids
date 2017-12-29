@@ -75,7 +75,7 @@ $(document).ready(function() {
 						
 						if(asteroid.is_potentially_hazardous_asteroid) {
 
-							console.log(asteroid)
+							// console.log(asteroid)
 
 							var id = asteroid.neo_reference_id
 

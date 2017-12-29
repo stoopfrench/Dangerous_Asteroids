@@ -16,13 +16,17 @@ h1 {
 	font-size: 3.25rem;
 	margin-top: 0;
 	font-variant: small-caps;
-	border-bottom: 2px solid grey;
 }
 
 nav li {
 
 	margin-left: .5rem;
 	margin-right: .5rem;
+}
+
+#titleContainer {
+
+	border-bottom: 2px solid grey;	
 }
 
 #entryInfo h3 {
