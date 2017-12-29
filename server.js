@@ -76,6 +76,7 @@ app.get('/sentry_data', function(req, res) {
 })
 
 //HTTPS SERVER ---------------------------------------------------------------------------
+var counter = 0
 
 try {
     var httpsConfig = {
@@ -84,7 +85,17 @@ try {
         cert: fs.readFileSync('/etc/letsencrypt/live/asteroids.iamaaronallen.com/fullchain.pem'),
     }
 
-    var httpsServer = HTTPS.createServer(httpsConfig, app)
+    var httpsServer = HTTPS.createServer(httpsConfig, app, function(){
+
+    	counter++
+
+    	fs.appendFile('viewCounter.text', counter, (err) => {
+  			
+  			if (err) throw err;
+  			
+  			console.log('written to file');
+		});
+    })
     
     httpsServer.listen(443, function(){
     	
