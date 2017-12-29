@@ -108,7 +108,7 @@ catch(e){
     
     var httpServer = HTTP.createServer(app)
     
-    daycdhttpServer.listen(80)
+    httpServer.listen(80)
 }
 
 //EXPRESS SERVER ------------------------------------------------------------------------
