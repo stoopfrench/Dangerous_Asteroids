@@ -85,20 +85,9 @@ try {
         cert: fs.readFileSync('/etc/letsencrypt/live/asteroids.iamaaronallen.com/fullchain.pem'),
     }
 
-    var httpsServer = HTTPS.createServer(httpsConfig, app, function(){
-
-    })
+    var httpsServer = HTTPS.createServer(httpsConfig, app)
     
     httpsServer.listen(443, function(){
-    	
-    	counter++
-
-    	fs.appendFile('viewCounter.txt', counter, (err) => {
-  			
-  			if (err) throw err;
-  			
-  			console.log('written to file');
-		});
 
     	console.log('running on 443')
     })

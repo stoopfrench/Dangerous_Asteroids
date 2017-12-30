@@ -156,9 +156,8 @@ $(document).ready(function() {
 							$('#message').append(`<h2>Invalid date format</h3>`)
 						}
 				
-			})
+			}, scrollToResults())
 						
-		scrollToResults()
 	})
 									
 
@@ -300,11 +299,10 @@ $(document).ready(function() {
 							$('#message').append(`<h2>Invalid date format</h3>`)
 						}
 				
-				})
+				}, scrollToResults())
 
 			}			
 		
-		scrollToResults()
 	})
 
 // PAST WEEK ================================================================================================================================================================================
@@ -467,9 +465,8 @@ $(document).ready(function() {
 								</div>`
 								)
 
-				})
+				}, scrollToResults())
 
-			scrollToResults()
 		})
 
 
@@ -648,11 +645,10 @@ $(document).ready(function() {
 								)
 
 
-			})
+			}, scrollToResults())
 
 		}
 
-		scrollToResults()
 	})
 	
 })

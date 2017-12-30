@@ -51,17 +51,29 @@ $(document).ready(function() {
 
 			// console.log('data ', data)
 
-			var splitDate = data.summary.last_obs.split('.')
+			var firstSplitDate = data.summary.first_obs.split('.')
 
-			var sliceDate = splitDate.slice(0,1)[0]
+			var firstSliceDate = firstSplitDate.slice(0,1)[0]
 
-			var year = sliceDate.split('-').shift()
+			var firstYear = firstSliceDate.split('-').shift()
 
-			var day = sliceDate.split('-').pop()
+			var firstDay = firstSliceDate.split('-').pop()
 
-			var month = sliceDate.split('-').slice(1,2).toString()
+			var firstMonth = firstSliceDate.split('-').slice(1,2).toString()
 
-			var lastObs = `${month}-${day}-${year}`
+			var firstObs = `${firstMonth}-${firstDay}-${firstYear}`
+
+			var lastSplitDate = data.summary.last_obs.split('.')
+
+			var lastSliceDate = lastSplitDate.slice(0,1)[0]
+
+			var lastYear = lastSliceDate.split('-').shift()
+
+			var lastDay = lastSliceDate.split('-').pop()
+
+			var lastMonth = lastSliceDate.split('-').slice(1,2).toString()
+
+			var lastObs = `${lastMonth}-${lastDay}-${lastYear}`
 
 			var darc = data.summary.darc
 
@@ -77,13 +89,14 @@ $(document).ready(function() {
 
 			$('.modal-title').text(data.summary.fullname)
 			$('#moreInfoList').append(`
+					<li>First Observation: <span>${firstObs}</span></li>
 					<li>Last Observation: <span>${lastObs}</span></li>
 					<li>Days Observed: <span>${fixedDarc} days</span></li>
-					<li>Mass: <span>${data.summary.mass} kg</span></li>
-					<li>Diameter: <span>${diameter} ft</span></li>
-					<li>Absolute Magnitude: <span>${data.summary.h}</span></li>
 					<li>Impact Potential: <span>${formatIp}</span></li>
 					<li># of Potential Impacts: <span>${data.summary.n_imp}</span></li>
+					<li>Absolute Magnitude: <span>${data.summary.h}</span></li>
+					<li>Mass: <span>${data.summary.mass} kg</span></li>
+					<li>Diameter: <span>${diameter} ft</span></li>
 					<li>Velocity: <span>${velocity} ft/s</span></li>
 					<li>Energy: <span>${data.summary.energy} megatons of TNT</span></li>
 				`)
