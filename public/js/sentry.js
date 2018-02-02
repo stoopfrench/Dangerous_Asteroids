@@ -1,31 +1,31 @@
 $(document).ready(function() {
 
-	var sentryData = []
+    var sentryData = []
 
-	$.get('/sentry_data', function(body, status){
+    $.get('/sentry_data', function(body, status) {
 
-		body = JSON.parse(body)
+        body = JSON.parse(body)
 
-		body.data.sort(function(a,b){
+        body.data.sort(function(a, b) {
 
-			return b.ip - a.ip
-		})
+            return b.ip - a.ip
+        })
 
-		sentryData = body.data.slice(0, 25)
+        sentryData = body.data.slice(0, 25)
 
-		// console.log('sentry data ', sentryData)
+        // console.log('sentry data ', sentryData)
 
-		for(var i = 0; i < sentryData.length; i++){
+        for (var i = 0; i < sentryData.length; i++) {
 
-			var ip = sentryData[i].ip
+            var ip = sentryData[i].ip
 
-			var formatIp = Number(ip).toExponential()
+            var formatIp = Number(ip).toExponential()
 
-			var diameter = (sentryData[i].diameter * 3280.84).toFixed(2)
+            var diameter = (sentryData[i].diameter * 3280.84).toFixed(2)
 
-			var velocity = Math.floor(sentryData[i].v_inf * 3280.84).toLocaleString()
+            var velocity = Math.floor(sentryData[i].v_inf * 3280.84).toLocaleString()
 
-			$('#resultsList').append(`
+            $('#resultsList').append(`
 					<li class="asteroidResults">
 						<h4 class="asteroidResultsTitle" onclick="getAsteroidDetails(this)" data-toggle="modal" data-target="#moreInfoModal">${sentryData[i].des}</h4>
 						<ul class="asteroidResultsDescription">
@@ -35,60 +35,60 @@ $(document).ready(function() {
 						</ul>
 					</li>
 				`)
-		}
-	})
+        }
+    })
 })
 
-	var getAsteroidDetails = function(name){
+var getAsteroidDetails = function(name) {
 
-		$('#moreInfoList').empty()
+    $('#moreInfoList').empty()
 
-		// console.log(name.textContent)
+    // console.log(name.textContent)
 
-		var asteroidSearch = name.textContent
+    var asteroidSearch = name.textContent
 
-		$.get(`https://ssd-api.jpl.nasa.gov/sentry.api?des=${asteroidSearch}`, function(data, status){
+    $.get(`https://ssd-api.jpl.nasa.gov/sentry.api?des=${asteroidSearch}`, function(data, status) {
 
-			// console.log('data ', data)
+        // console.log('data ', data)
 
-			var firstSplitDate = data.summary.first_obs.split('.')
+        var firstSplitDate = data.summary.first_obs.split('.')
 
-			var firstSliceDate = firstSplitDate.slice(0,1)[0]
+        var firstSliceDate = firstSplitDate.slice(0, 1)[0]
 
-			var firstYear = firstSliceDate.split('-').shift()
+        var firstYear = firstSliceDate.split('-').shift()
 
-			var firstDay = firstSliceDate.split('-').pop()
+        var firstDay = firstSliceDate.split('-').pop()
 
-			var firstMonth = firstSliceDate.split('-').slice(1,2).toString()
+        var firstMonth = firstSliceDate.split('-').slice(1, 2).toString()
 
-			var firstObs = `${firstMonth}-${firstDay}-${firstYear}`
+        var firstObs = `${firstMonth}-${firstDay}-${firstYear}`
 
-			var lastSplitDate = data.summary.last_obs.split('.')
+        var lastSplitDate = data.summary.last_obs.split('.')
 
-			var lastSliceDate = lastSplitDate.slice(0,1)[0]
+        var lastSliceDate = lastSplitDate.slice(0, 1)[0]
 
-			var lastYear = lastSliceDate.split('-').shift()
+        var lastYear = lastSliceDate.split('-').shift()
 
-			var lastDay = lastSliceDate.split('-').pop()
+        var lastDay = lastSliceDate.split('-').pop()
 
-			var lastMonth = lastSliceDate.split('-').slice(1,2).toString()
+        var lastMonth = lastSliceDate.split('-').slice(1, 2).toString()
 
-			var lastObs = `${lastMonth}-${lastDay}-${lastYear}`
+        var lastObs = `${lastMonth}-${lastDay}-${lastYear}`
 
-			var darc = data.summary.darc
+        var darc = data.summary.darc
 
-			var fixedDarc = darc.split('.')[0]
+        var fixedDarc = darc.split('.')[0]
 
-			var ip = data.summary.ip
+        var ip = data.summary.ip
 
-			var formatIp = Number(ip).toExponential()
+        var formatIp = Number(ip).toExponential()
 
-			var diameter = (data.summary.diameter * 3280.84).toFixed(2)
+        var diameter = (data.summary.diameter * 3280.84).toFixed(2)
 
-			var velocity = Math.floor(data.summary.v_inf * 3280.84).toLocaleString()
+        var velocity = Math.floor(data.summary.v_inf * 3280.84).toLocaleString()
 
-			$('.modal-title').text(data.summary.fullname)
-			$('#moreInfoList').append(`
+        $('.modal-title').text(data.summary.fullname)
+        $('#moreInfoList').append(`
 					<li>First Observation: <span>${firstObs}</span></li>
 					<li>Last Observation: <span>${lastObs}</span></li>
 					<li>Days Observed: <span>${fixedDarc} days</span></li>
@@ -101,5 +101,5 @@ $(document).ready(function() {
 					<li>Energy: <span>${data.summary.energy} megatons of TNT</span></li>
 				`)
 
-		})
-	}
+    })
+}

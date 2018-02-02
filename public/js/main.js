@@ -155,8 +155,8 @@ $(document).ready(function() {
 
 							$('#message').append(`<h2>Invalid date format</h3>`)
 						}
-				
-			}, scrollToResults())
+				scrollToResults()
+			})
 						
 	})
 									
@@ -298,8 +298,8 @@ $(document).ready(function() {
 
 							$('#message').append(`<h2>Invalid date format</h3>`)
 						}
-				
-				}, scrollToResults())
+					scrollToResults()
+				})
 
 			}			
 		
@@ -464,8 +464,8 @@ $(document).ready(function() {
 								  </div>
 								</div>`
 								)
-
-				}, scrollToResults())
+					scrollToResults()
+				})
 
 		})
 
@@ -644,8 +644,8 @@ $(document).ready(function() {
 								</div>`
 								)
 
-
-			}, scrollToResults())
+				scrollToResults()
+			})
 
 		}
 
@@ -656,7 +656,7 @@ $(document).ready(function() {
 
 	// RESET HTML FUNCTION
 
-	var resetHTML = function(){
+	function resetHTML(){
 
 			$('#entryInfo').empty()
 			$('#entry').empty()
@@ -664,7 +664,7 @@ $(document).ready(function() {
 			$('#summary').empty()
 	}
 	
-	var scrollToResults = function(){
+	function scrollToResults(){
 		var top = $('.results').offset().top
 		$('html, body').animate({
 			scrollTop: top,

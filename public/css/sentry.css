@@ -3,111 +3,111 @@
 
 :root {
 
-	font-size: 16px;
+    font-size: 16px;
 }
 
 body {
 
-	font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 ol {
 
-	padding: 0;
+    padding: 0;
 }
 
-ol, ul {
+ol,
+ul {
 
-	list-style: none;
+    list-style: none;
 }
 
 h1 {
 
-	font-size: 3.25rem;
-	margin-top: 0;
-	font-variant: small-caps;
-	border-bottom: 2px solid grey;
+    font-size: 3.25rem;
+    margin-top: 0;
+    font-variant: small-caps;
+    border-bottom: 2px solid grey;
 }
 
 nav li {
 
-	margin-left: .5rem;
-	margin-right: .5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 .asteroidResults {
 
-	background-color: #353A3F;
-	margin-bottom: .5rem;
+    background-color: #353A3F;
+    margin-bottom: .5rem;
 }
 
 .asteroidResultsTitle {
 
-	border-bottom: 1px solid black;
-	padding: .5rem;
-	cursor: pointer;
-	color: white;
+    border-bottom: 1px solid black;
+    padding: .5rem;
+    cursor: pointer;
+    color: white;
 }
 
 .asteroidResultsTitle span {
 
-	font-family: 'Roboto Mono', monospace;
-	/*font-size: .9rem;*/
-
+    font-family: 'Roboto Mono', monospace;
+    /*font-size: .9rem;*/
 }
 
 h4.asteroidResultsTitle {
 
-	margin-bottom: 0;
-	text-align: center;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .asteroidResultsDescription {
 
-	background-color: #E4E4E4;
-	color: #292929;
-	padding-bottom: .5rem;
+    background-color: #E4E4E4;
+    color: #292929;
+    padding-bottom: .5rem;
 }
 
 .asteroidResultsDescription li {
 
-	border-bottom: 1px solid #202020;
-	margin-right: 40px;
+    border-bottom: 1px solid #202020;
+    margin-right: 40px;
 }
 
 #moreInfoList li {
 
-	border-bottom: 1px solid #202020;
-	margin-right: 40px;
+    border-bottom: 1px solid #202020;
+    margin-right: 40px;
 }
 
 #moreInfoList span {
 
-	color: grey;
-	margin-left: .25rem;
+    color: grey;
+    margin-left: .25rem;
 }
 
 .modal-content {
 
-	border: 1px solid white;
-	border-radius: 0;
-	box-shadow: 0px 0px 5px white;
+    border: 1px solid white;
+    border-radius: 0;
+    box-shadow: 0px 0px 5px white;
 }
 
 .modal-header {
 
-	background-color: #353A3F;
-	color: white;
-	border-radius: 0;
+    background-color: #353A3F;
+    color: white;
+    border-radius: 0;
 }
 
 .modal-header span {
 
-	color: white;
+    color: white;
 }
 
-.modal-backdrop  {
-	
-	background-color: #2B2B2B;
+.modal-backdrop {
+
+    background-color: #2B2B2B;
     opacity: 0.95 !important;
 }
