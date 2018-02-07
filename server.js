@@ -76,40 +76,41 @@ app.get('/sentry_data', function(req, res) {
 })
 
 //HTTPS SERVER ---------------------------------------------------------------------------
-// var counter = 0
+/*var httpsKey = secrets.httpsKey
+var httpsCert = secrets.httpsCert
 
-// try {
-//     var httpsConfig = {
+try {
+    var httpsConfig = {
 
-//         key: fs.readFileSync('/etc/letsencrypt/live/asteroids.iamaaronallen.com/privkey.pem'),
-//         cert: fs.readFileSync('/etc/letsencrypt/live/asteroids.iamaaronallen.com/fullchain.pem'),
-//     }
+        key: fs.readFileSync(httpsKey),
+        cert: fs.readFileSync(httpsCert),
+    }
 
-//     var httpsServer = HTTPS.createServer(httpsConfig, app)
+    var httpsServer = HTTPS.createServer(httpsConfig, app)
 
-//     httpsServer.listen(443, function() {
+    httpsServer.listen(443, function() {
 
-//         console.log('running on 443')
-//     })
+        console.log('running on 443')
+    })
 
-//     var httpApp = express()
+    var httpApp = express()
 
-//     httpApp.use(function(req, res, next) {
+    httpApp.use(function(req, res, next) {
 
-//         res.redirect('https://asteroids.iamaaronallen.com' + req.url)
-//     })
+        res.redirect('https://asteroids.iamaaronallen.com' + req.url)
+    })
 
-//     httpApp.listen(80)
-// } catch (e) {
+    httpApp.listen(80)
+} catch (e) {
 
-//     console.log(e)
+    console.log(e)
 
-//     console.log('could not start HTTPS server')
+    console.log('could not start HTTPS server')
 
-//     var httpServer = HTTP.createServer(app)
+    var httpServer = HTTP.createServer(app)
 
-//     httpServer.listen(80)
-// }
+    httpServer.listen(80)
+}*/
 
 //EXPRESS SERVER ------------------------------------------------------------------------
 
